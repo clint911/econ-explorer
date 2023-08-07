@@ -1,0 +1,23 @@
+Blog Application contains: Blog Posts, Comments, Creating Blog Post, Commenting
+Models:
+    BlogPosts or Articles(userName, articleId, ArticleContent{enum type=[Design,Tutorials]} , body}, Date--later)
+     Users(firstName, lastName, userName, userId, role: enum{admin, blogger, default/viewer)
+     Comments(userName, userId, textContent, Date--later)
+Controllers: Routes:
+/admin --we censor stuff here,if you disagree we delete. Server Sided censorship
+/DailyDigest --Displays a list of articles HardCode first in V2, we can randomize or take say 6 best or latest articles
+/DesignTools --Displays a list of design and generally artistic articles
+/Error --Our error page
+/SingleArticle --Returns a particular article that has been clicked on, client can use the handler and send a post request containing the articleId
+/Tutorials --Returns a bunch of tutorial articles
+N/B: Each of the above will return data in the form of JSON which the client will consume
+V2: After everything is up and running, here are the proposed improvements to the platform:
+Additional Routes
+/FilmReviews /HistoryExceptsOverExplained
+V3: Advanced additions
+(i)3 Buttons, you choose the news according to your political leaning, advanced filtering and news classification.(left, neutral, right).
+(ii)Generally there will be a big revamp to be like groundnews.com but Kenyan/African
+(iii)Coverage details :(Total sources,no of left,right, center sources, last updated, Bias Distribution, untracked bias)
+(iv) On the News Articles Section All, left, right, center
+v4: It shall be a news aggregation platform kind of thing
+v5: Finally Integration with the BlockChain to facilitate other advanced functionality
