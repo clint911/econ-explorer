@@ -19,7 +19,6 @@ import java.util.Map;
 public class ArticleController {
 
     /*
-    *@dev This is basically the controller for the home route & crud methods on an article depending by Id
     * @Tutorials: Handles get of that page --returns articles of type Tutorial
     * @Each of the controllers for the others follow the above naming and ordering convention
      */
@@ -39,6 +38,8 @@ public class ArticleController {
         //TODO: Future Clinton please make time to research and get this to work
         return null;
     }
+
+
     //this one will take action when user clicks a specific previewed article
     @GetMapping("/singleArticle/{id}")
     public ResponseEntity<Article> getArticleById(@PathVariable(value = "id")Long articleId)
