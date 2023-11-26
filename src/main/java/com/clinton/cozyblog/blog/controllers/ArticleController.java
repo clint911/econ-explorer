@@ -34,13 +34,11 @@ public class ArticleController {
      */
     @GetMapping("/Tutorials")
     public List<Article> getAllArticlesByTypeTutorials() {
-        //TODO:Do some research on how to find By Type
-        return null;
+        return articleRepository.findByType(ArticleTypes.Tutorials);
     }
     @GetMapping("/DesignTools")
     public List<Article> getAllArticlesByTypeDesign() {
-        //TODO: Future Clinton please make time to research and get this to work
-        return null;
+        return articleRepository.findByType(ArticleTypes.DesignTools);
     }
 
 

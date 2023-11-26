@@ -1,5 +1,6 @@
 package com.clinton.cozyblog.blog.models;
 
+import com.clinton.cozyblog.blog.controllers.ArticleTypes;
 import jakarta.persistence.*;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
@@ -17,8 +18,10 @@ public class Article {
        @Column (name="creator_id", nullable=false)
        private long creatorId;
 
-       @Column (name = "article_type", nullable = false)
-       private String articleType;//{Tutorial,Design,Other};
+       @Enumerated(EnumType.STRING)
+       @Column(name = "article_types", nullable = false)
+       private ArticleTypes articleType;
+       //{Tutorial,Design,Other};
        @Column (name = "article_content", nullable = false)
        private String articleContent;//Just a string of json that will be later worked on the client side
        @CreatedDate
@@ -29,7 +32,7 @@ public class Article {
        //Default no args constructor
        public Article() {};
        //Our constructor dictating the way we want to be on initialization
-       public Article(long articleId, long creatorId, String articleType, String articleContent) {
+       public Article(long articleId, long creatorId, ArticleTypes articleType, String articleContent) {
               this.articleId = articleId;
               this.creatorId = creatorId;
               this.articleType = articleType;
@@ -53,11 +56,11 @@ public class Article {
               this.creatorId = creatorId;
        }
 
-       public String getArticleType() {
+       public ArticleTypes getArticleType() {
               return articleType;
        }
 
-       public void setArticleType(String articleType) {
+       public void setArticleType(ArticleTypes articleType) {
               this.articleType = articleType;
        }
 

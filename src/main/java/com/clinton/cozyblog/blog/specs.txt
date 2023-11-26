@@ -21,3 +21,5 @@ V3: Advanced additions
 (iv) On the News Articles Section All, left, right, center
 v4: It shall be a news aggregation platform kind of thing
 v5: Finally Integration with the BlockChain to facilitate other advanced functionality
+
+Current Next Step: Frontend Integration
