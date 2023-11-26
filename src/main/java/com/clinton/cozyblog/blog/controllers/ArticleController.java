@@ -28,6 +28,10 @@ public class ArticleController {
     public List<Article> getAllArticles(){
         return  articleRepository.findAll();
     }
+    /*
+    *The below two controller routes handle searching articles by category. This can be handling the Tutorials page,
+    * Design page, fix to handle the pages
+     */
     @GetMapping("/Tutorials")
     public List<Article> getAllArticlesByTypeTutorials() {
         //TODO:Do some research on how to find By Type

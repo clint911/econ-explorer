@@ -29,10 +29,10 @@ public class Comment {
   this.commentorId = commentorId;
   this.textContent = textContent;
  }
- private  long getCommentId() {
+ public long getCommentId() {
   return  commentId;
  }
- private void setCommentId(long commentId) {
+ public void setCommentId(long commentId) {
   this.commentId = commentId;
  }
 
