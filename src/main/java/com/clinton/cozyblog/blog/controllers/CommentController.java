@@ -10,7 +10,9 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/comments")
@@ -31,9 +33,9 @@ public class CommentController {
    */
   @GetMapping("/comment/id")
   public ResponseEntity<Comment> getCommentById(@PathVariable(value = "id") Long commentId)
-      throws ResourceNotFoundException {
+   throws ResourceNotFoundException {
     Comment comment = commentRepository.findById(commentId)
-        .orElseThrow(() -> new ResourceNotFoundException("Comment Not found For this Id :: " + commentId));
+     .orElseThrow(() -> new ResourceNotFoundException("Comment Not found For this Id :: " + commentId));
     return ResponseEntity.ok(comment);
   }
 
@@ -56,9 +58,9 @@ public class CommentController {
    */
   @PutMapping("/singleComment/{id}")
   public ResponseEntity<Comment> updateSingleComment(@PathVariable(value = "id") Long commentId,
-      @Valid @RequestBody Comment commentDetails) throws ResourceNotFoundException {
+                                                     @Valid @RequestBody Comment commentDetails) throws ResourceNotFoundException {
     Comment comment = commentRepository.findById(commentId)
-        .orElseThrow(() -> new ResourceNotFoundException("comment not found for this id" + commentId));
+     .orElseThrow(() -> new ResourceNotFoundException("comment not found for this id" + commentId));
     // setting the comment content
     comment.setCommentId(commentDetails.getCommentId());
     comment.setCommentorId(commentDetails.getCommentId());
@@ -66,5 +68,23 @@ public class CommentController {
     final Comment updatedSingleComment = commentRepository.save(comment);
     return ResponseEntity.ok(updatedSingleComment);
   }
+  /*
+   *@dev Deleting a Single Comment
+   */
+  @ResponseStatus(code = HttpStatus.NO_CONTENT)
+  @DeleteMapping("/singleComment/{id}")
+  public Map<String, Boolean> deleteSingleComment
+  (@PathVariable(value = "commentId")Long commentId)
+    throws ResourceNotFoundException {
+    Comment comment = commentRepository.findById(commentId)
+     .orElseThrow(() -> new ResourceNotFoundException("comment not found for this id" + commentId));
 
+    commentRepository.delete(comment);
+    Map<String, Boolean> response = new HashMap<>();
+    response.put("deleted", Boolean.TRUE);
+    return  response;
+  }
+  /*
+  Ensures that the response code is 204 (no content) this way, there is absolutely no need to revert any data to the
+  client for a deleted comment */
 }
